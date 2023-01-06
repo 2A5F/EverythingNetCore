@@ -246,9 +246,8 @@
         var dll = Path.Combine(Environment.Is64BitProcess ? "x64" : "x86", EverythingDLL);
         LoadLibraryA(dll);
       }
-      catch (Exception e)
+      catch
       {
-        Console.WriteLine(e);
         // ignored
       }
     }
