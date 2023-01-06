@@ -8,7 +8,7 @@ namespace EverythingNet.Tests
   [TestFixture]
   public class DateSearchTests
   {
-    private Everything everyThing;
+    private Everything? everyThing;
 
     [SetUp]
     public void Setup()
@@ -19,7 +19,7 @@ namespace EverythingNet.Tests
     [TearDown]
     public void TearDown()
     {
-      this.everyThing.Dispose();
+      this.everyThing?.Dispose();
     }
 
     [Test, Ignore("Too long to execute")]
@@ -31,7 +31,7 @@ namespace EverythingNet.Tests
       string expectedResult = Path.Combine(Directory.GetCurrentDirectory(), filename);
 
       // Act
-      var results = this.everyThing.Search()
+      var results = this.everyThing!.Search()
         .CreationDate
         .Equal(Dates.Today);
 
@@ -91,13 +91,13 @@ namespace EverythingNet.Tests
     public string AccessDate(Dates date)
     {
       // Act
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .AccessDate
         .Equal(date);
 
       // Assert
-      return queryable.ToString().ToLower();
+      return queryable.ToString()!.ToLower();
     }
 
     [TestCase(Dates.Yesterday, ExpectedResult = "dm:yesterday")]
@@ -152,13 +152,13 @@ namespace EverythingNet.Tests
     public string ModificationDate(Dates date)
     {
       // Act
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .ModificationDate
         .Equal(date);
 
       // Assert
-      return queryable.ToString().ToLower();
+      return queryable.ToString()!.ToLower();
     }
 
 
@@ -214,13 +214,13 @@ namespace EverythingNet.Tests
     public string CreationDate(Dates date)
     {
       // Act
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .CreationDate
         .Equal(date);
 
       // Assert
-      return queryable.ToString().ToLower();
+      return queryable.ToString()!.ToLower();
     }
 
 
@@ -276,13 +276,13 @@ namespace EverythingNet.Tests
     public string RunDate(Dates date)
     {
       // Act
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .RunDate
         .Equal(date);
 
       // Assert
-      return queryable.ToString().ToLower();
+      return queryable.ToString()!.ToLower();
     }
 
     [TestCase(1, CountableDates.Hours, ExpectedResult = "dm:last1hours")]
@@ -294,13 +294,13 @@ namespace EverythingNet.Tests
     public string LastDate(int count, CountableDates date)
     {
       // Act
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .ModificationDate
         .Last(count, date);
 
       // Assert
-      return queryable.ToString().ToLower();
+      return queryable.ToString()!.ToLower();
     }
   }
 }

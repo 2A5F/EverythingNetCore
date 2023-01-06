@@ -16,7 +16,7 @@ namespace EverythingNet.Tests
     private const string FileToSearchA = "EverythingState.cs";
     private const string FileToSearchB = "DateSearchTests.cs";
 
-    private Everything everyThing;
+    private Everything? everyThing;
 
     [SetUp]
     public void Setup()
@@ -27,7 +27,7 @@ namespace EverythingNet.Tests
     [TearDown]
     public void TearDown()
     {
-      this.everyThing.Dispose();
+      this.everyThing?.Dispose();
     }
 
     [Test]
@@ -150,7 +150,7 @@ namespace EverythingNet.Tests
     public void StressTest()
     {
       // Arrange
-      var queryable = this.everyThing
+      var queryable = this.everyThing!
         .Search()
         .Name
         .Contains(FileToSearchA);
@@ -175,7 +175,7 @@ namespace EverythingNet.Tests
     [Test]
     public void MultipleInstances()
     {
-      var firstResult = this.everyThing
+      var firstResult = this.everyThing!
           .Search()
           .Name
           .Contains("IImageQueryable.cs");
@@ -217,7 +217,7 @@ namespace EverythingNet.Tests
           .Contains(searchString);
 
         // Assert
-        Assert.That(this.everyThing.LastErrorCode, Is.EqualTo(ErrorCode.Ok));
+        Assert.That(this.everyThing!.LastErrorCode, Is.EqualTo(ErrorCode.Ok));
         Assert.That(results, Is.Not.Empty);
         foreach (var result in results)
         {

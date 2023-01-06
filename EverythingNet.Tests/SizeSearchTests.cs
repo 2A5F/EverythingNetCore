@@ -36,7 +36,7 @@ namespace EverythingNet.Tests
         .Size
         .Equal(standardSize);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(SizeUnit.Kb, 10, ExpectedResult = "size:>10kb")]
@@ -49,7 +49,7 @@ namespace EverythingNet.Tests
         .Size
         .GreaterThan(value, unit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(SizeUnit.Kb, 10, ExpectedResult = "size:>=10kb")]
@@ -62,7 +62,7 @@ namespace EverythingNet.Tests
         .Size
         .GreaterOrEqualThan(value, unit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(SizeUnit.Kb, 10, ExpectedResult = "size:<10kb")]
@@ -75,7 +75,7 @@ namespace EverythingNet.Tests
         .Size
         .LessThan(value, unit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(SizeUnit.Kb, 10, ExpectedResult = "size:<=10kb")]
@@ -88,7 +88,7 @@ namespace EverythingNet.Tests
         .Size
         .LessOrEqualThan(value, unit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(1, 10, ExpectedResult = "size:1Kb-10Kb")]
@@ -101,7 +101,7 @@ namespace EverythingNet.Tests
         .Size
         .Between(min, max);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(SizeUnit.Kb, 10, 100, ExpectedResult = "size:10Kb-100Kb")]
@@ -114,7 +114,7 @@ namespace EverythingNet.Tests
         .Size
         .Between(min, max, unit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase(10, SizeUnit.Kb, 100, SizeUnit.Mb, ExpectedResult = "size:10Kb-100Mb")]
@@ -127,7 +127,7 @@ namespace EverythingNet.Tests
         .Size
         .Between(min, minUnit, max, maxUnit);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [Test]

@@ -6,7 +6,7 @@
     <LangVersion>11.0</LangVersion>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <PackageId>$(AssemblyName)Core</PackageId>
     <Title>$(AssemblyName)Core</Title>
     <Description>.NET library that wraps Everything Search excellent tool that allows to instantly search for files.</Description>

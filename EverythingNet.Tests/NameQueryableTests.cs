@@ -29,7 +29,7 @@ namespace EverythingNet.Tests
         .Name
         .Contains(name);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("*.abc", "*.def", ExpectedResult = "*.abc|*.def")]
@@ -44,7 +44,7 @@ namespace EverythingNet.Tests
         .Name
         .Contains(search2);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("*.abc", "*.def", ExpectedResult = "*.abc *.def")]
@@ -60,7 +60,7 @@ namespace EverythingNet.Tests
         .Name
         .Contains(search2);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("*.abc", "*.def", ExpectedResult = "*.abc !*.def")]
@@ -75,7 +75,7 @@ namespace EverythingNet.Tests
         .Name
         .Contains(search2);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("prefix", ExpectedResult = "startwith:prefix")]
@@ -86,7 +86,7 @@ namespace EverythingNet.Tests
         .Name
         .StartWith(pattern);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("postfix", ExpectedResult = "endwith:postfix")]
@@ -97,7 +97,7 @@ namespace EverythingNet.Tests
         .Name
         .EndWith(pattern);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("cs", ExpectedResult = "ext:cs")]
@@ -109,7 +109,7 @@ namespace EverythingNet.Tests
         .Name
         .Extension(search);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [TestCase("cs csproj xaml", ExpectedResult = "ext:cs;csproj;xaml")]
@@ -122,7 +122,7 @@ namespace EverythingNet.Tests
         .Name
         .Extensions(extensions);
 
-      return queryable.ToString();
+      return queryable.ToString()!;
     }
 
     [Test]
