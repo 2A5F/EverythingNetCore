@@ -12,7 +12,7 @@
   {
     private readonly IEverythingInternal everything;
     private IQueryGenerator parent;
-    private IEnumerable<ISearchResult> results;
+    private IEnumerable<ISearchResult>? results;
 
     protected Queryable(IEverythingInternal everything, IQueryGenerator parent)
     {
@@ -48,7 +48,7 @@
     {
       this.ExecuteIfNeeded();
 
-      return this.results.GetEnumerator();
+      return this.results!.GetEnumerator();
     }
 
     public virtual IEnumerable<string> GetQueryParts()
@@ -56,7 +56,7 @@
       return this.parent?.GetQueryParts() ?? Enumerable.Empty<string>();
     }
 
-    protected string QuoteIfNeeded(string text)
+    protected string QuoteIfNeeded(string? text)
     {
       if (text == null)
       {

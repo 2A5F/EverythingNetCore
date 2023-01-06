@@ -6,12 +6,12 @@
 
   internal class MusicQueryable : Queryable, IMusicQueryable
   {
-    private string artistPattern;
-    private string genrePattern;
-    private string titlePattern;
+    private string? artistPattern;
+    private string? genrePattern;
+    private string? titlePattern;
     private int? trackNumber;
-    private string commentPattern;
-    private string albumPattern;
+    private string? commentPattern;
+    private string? albumPattern;
 
     public MusicQueryable(IEverythingInternal everything, IQueryGenerator parent)
       : base(everything, parent)

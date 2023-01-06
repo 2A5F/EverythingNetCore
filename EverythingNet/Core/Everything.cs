@@ -24,7 +24,7 @@
 
     public Everything()
     {
-      this.ResulKind = ResultKind.Both;
+      this.ResultKind = ResultKind.Both;
       Interlocked.Increment(ref lastReplyId);
       this.replyId = Convert.ToUInt32(lastReplyId);
       if (!EverythingState.IsStarted())
@@ -33,7 +33,7 @@
       }
     }
 
-    public ResultKind ResulKind { get; set; }
+    public ResultKind ResultKind { get; set; }
 
     public bool MatchCase { get; set; }
 
@@ -89,7 +89,7 @@
 
     private string ApplySearchResultKind(string searchPatten)
     {
-      switch (this.ResulKind)
+      switch (this.ResultKind)
       {
         case ResultKind.FilesOnly:
           return $"files: {searchPatten}";

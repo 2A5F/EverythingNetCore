@@ -27,7 +27,7 @@ namespace EverythingNet.Query
 
   internal class SizeQueryable : Queryable, ISizeQueryable
   {
-    private ISizeRef sizeRef;
+    private ISizeRef? sizeRef;
 
     public SizeQueryable(IEverythingInternal everything, IQueryGenerator parent)
       : base(everything, parent)
@@ -63,7 +63,7 @@ namespace EverythingNet.Query
         yield return queryPart;
       }
 
-      yield return this.sizeRef.ToString();
+      yield return this.sizeRef?.ToString() ?? "";
     }
 
     public ISizeQueryable GreaterThan(int value)

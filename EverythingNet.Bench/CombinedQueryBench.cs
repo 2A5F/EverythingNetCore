@@ -1,14 +1,13 @@
 ﻿namespace EverythingNet.Bench
 {
   using BenchmarkDotNet.Attributes;
-  using BenchmarkDotNet.Attributes.Jobs;
   using BenchmarkDotNet.Engines;
 
   using EverythingNet.Core;
   using EverythingNet.Interfaces;
   using EverythingNet.Query;
 
-  [SimpleJob(RunStrategy.ColdStart, launchCount: 2, warmupCount: 1, targetCount: 4, invocationCount: 8, id: "FastAndDirtyJob")]
+  [SimpleJob(RunStrategy.ColdStart, launchCount: 2, warmupCount: 1, iterationCount: 4, invocationCount: 8, id: "FastAndDirtyJob")]
   public class CombinedQueryBench
   {
     [Benchmark]

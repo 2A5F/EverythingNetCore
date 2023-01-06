@@ -6,7 +6,7 @@
 
   internal class ImageQueryable : Queryable, IImageQueryable
   {
-    private string pattern;
+    private string? pattern;
 
     public ImageQueryable(IEverythingInternal everything, IQueryGenerator parent)
       : base(everything, parent)
@@ -45,7 +45,7 @@
         yield return queryPart;
       }
 
-      yield return this.pattern;
+      yield return this.pattern!;
     }
 
     private IImageQueryable Search(string search)

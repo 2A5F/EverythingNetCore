@@ -1,8 +1,9 @@
 ﻿namespace EverythingNet.Core
 {
   using System;
+  using System.IO;
   using System.Runtime.InteropServices;
-  using System.Text;
+    using System.Text;
   using System.Threading;
 
   internal class EverythingWrapper
@@ -25,11 +26,7 @@
       }
     }
 
-#if WIN32
-    private const string EverythingDLL = EverythingDLL;
-#else
-    private const string EverythingDLL = "Everything64.dll";
-#endif
+    private const string EverythingDLL = "Everything";
 
     private const int EVERYTHING_OK = 0;
     private const int EVERYTHING_ERROR_MEMORY = 1;
@@ -51,7 +48,7 @@
     }
 
 
-  internal static IDisposable Lock()
+    internal static IDisposable Lock()
     {
       return new Locker(locker);
     }
@@ -237,5 +234,23 @@
 
     [DllImport(EverythingDLL)]
     public static extern bool Everything_IsFileInfoIndexed(FileInfoIndex fileInfoType);
+
+
+    [DllImport("kernel32")]
+    private static extern IntPtr LoadLibraryA([MarshalAs(UnmanagedType.LPStr)] string fileName);
+
+    static EverythingWrapper()
+    {
+      try
+      {
+        var dll = Path.Combine(Environment.Is64BitProcess ? "x64" : "x86", EverythingDLL);
+        LoadLibraryA(dll);
+      }
+      catch
+      {
+        // ignored
+      }
+    }
+
   }
 }

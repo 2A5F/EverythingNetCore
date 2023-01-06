@@ -26,6 +26,6 @@ namespace EverythingNet.Interfaces
 
     DateTime Executed { get; }
 
-    Exception LastException { get; }
+    Exception? LastException { get; }
   }
 }

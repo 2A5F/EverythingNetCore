@@ -10,9 +10,9 @@
   internal class Query : IQuery, IQueryGenerator
   {
     private readonly IEverythingInternal everything;
-    private readonly IQueryGenerator parent;
+    private readonly IQueryGenerator? parent;
 
-    public Query(IEverythingInternal everything, IQueryGenerator parent = null)
+    public Query(IEverythingInternal everything, IQueryGenerator? parent = null)
     {
       this.everything = everything;
       this.parent = parent;

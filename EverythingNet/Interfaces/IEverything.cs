@@ -40,7 +40,7 @@
 
   public interface IEverything
   {
-    ResultKind ResulKind { get; set; }
+    ResultKind ResultKind { get; set; }
 
     bool MatchCase { get; set; }
 

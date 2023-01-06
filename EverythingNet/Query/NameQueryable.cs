@@ -8,10 +8,10 @@ namespace EverythingNet.Query
 
   internal class NameQueryable : Queryable, INameQueryable
   {
-    private string pattern;
-    private string startWith;
-    private string endWith;
-    private string extensions;
+    private string? pattern;
+    private string? startWith;
+    private string? endWith;
+    private string? extensions;
 
     public NameQueryable(IEverythingInternal everything, IQueryGenerator parent)
       : base(everything, parent)
@@ -40,7 +40,7 @@ namespace EverythingNet.Query
 
       if (!string.IsNullOrEmpty(this.pattern))
       {
-        yield return this.pattern;
+        yield return this.pattern!;
       }
 
       if (!string.IsNullOrEmpty(this.endWith))
@@ -54,14 +54,14 @@ namespace EverythingNet.Query
       }
     }
 
-    public INameQueryable StartWith(string pattern)
+    public INameQueryable StartWith(string? pattern)
     {
       this.startWith = this.QuoteIfNeeded(pattern);
 
       return this;
     }
 
-    public INameQueryable EndWith(string pattern)
+    public INameQueryable EndWith(string? pattern)
     {
       this.endWith = this.QuoteIfNeeded(pattern);
 
@@ -92,7 +92,7 @@ namespace EverythingNet.Query
       return this.ExtensionCollection(newExtensions);
     }
 
-    private INameQueryable ExtensionCollection(IEnumerable<string> newExtensions)
+    private INameQueryable ExtensionCollection(IEnumerable<string>? newExtensions)
     {
       if (newExtensions == null)
       {

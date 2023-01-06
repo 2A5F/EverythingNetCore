@@ -13,7 +13,7 @@ namespace EverythingNet.Core
     private readonly uint replyId;
     private readonly uint index;
 
-    private string fullPath;
+    private string? fullPath;
 
     public SearchResult(int index, uint replyId)
     {
@@ -54,7 +54,7 @@ namespace EverythingNet.Core
         try
         {
           return !string.IsNullOrEmpty(this.FullPath)
-            ? System.IO.Path.GetDirectoryName(this.FullPath)
+            ? System.IO.Path.GetDirectoryName(this.FullPath)!
             : string.Empty;
         }
         catch (Exception e)
@@ -123,7 +123,7 @@ namespace EverythingNet.Core
 
     public DateTime Executed => this.GenericDate(EverythingWrapper.Everything_GetResultDateRun, File.GetLastAccessTime);
 
-    public Exception LastException { get; private set; }
+    public Exception? LastException { get; private set; }
 
     private DateTime GenericDate(MyDelegate func, Func<string, DateTime> fallbackDelegate)
     {

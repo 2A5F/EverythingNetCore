@@ -68,8 +68,18 @@
 
     private static void StartProcess(string options)
     {
-      string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
       string exePath = Path.GetFullPath(Path.Combine(path, @"Everything.exe"));
+
+      if (!File.Exists(exePath))
+      {
+        exePath = Path.Combine(path, Environment.Is64BitProcess ? "x64" : "x86", @"Everything.exe");
+      }
+
+      if (!File.Exists(exePath))
+      {
+        throw new Exception("Everything.exe not found");
+      }
 
       Process.Start(exePath, options);
     }
